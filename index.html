@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>商品图片切换学习版3</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <style type="text/css">
+      /* 通用样式 */
+      html {
+        font-size: 100px;
+      }
+      /* 借鉴百度body样式 */
+      body {
+        font-size: 0.13rem;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #000000;
+        background-color: #f9f9f9;
+      }
+
+      a {
+        display: block;
+      }
+      img {
+        display: block;
+      }
+
+      /* 页面样式 */
+      .box {
+        width: 3.62rem;
+        margin: 0 auto;
+        padding-top: 1rem;
+      }
+      .bgImg {
+        border: 0.01rem solid #eeeeee;
+        width: 3.6rem;
+        height: 3.6rem;
+        background-image: url('./img/01big.jpg');
+        background-repeat: no-repeat;
+        background-position: 0 0;
+      }
+      .bgImg-aTag {
+        width: 3.6rem;
+        height: 3.6rem;
+      }
+      .imgList {
+        width: 3.6rem;
+        height: 0.7rem;
+        border: 0.01rem solid #eeeeee;
+        border-top-width: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .imgList > li {
+        width: 0.7rem;
+        height: 0.7rem;
+        border: 0.01rem solid transparent;
+        opacity: 0.8;
+      }
+
+      .imgList > li:hover {
+        border: 0.01rem solid #ff1244;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="bgImg">
+        <a class="bgImg-aTag" href="javascript:void(0);"></a>
+      </div>
+      <ul class="imgList">
+        <li>
+          <a href="javascript:void(0);"><img src="./img/01.jpg" alt=""/></a>
+        </li>
+        <li>
+          <a href="javascript:void(0);"><img src="./img/02.jpg" alt=""/></a>
+        </li>
+        <li>
+          <a href="javascript:void(0);"><img src="./img/03.jpg" alt=""/></a>
+        </li>
+        <li>
+          <a href="javascript:void(0);"><img src="./img/04.jpg" alt=""/></a>
+        </li>
+        <li>
+          <a href="javascript:void(0);"><img src="./img/05.jpg" alt=""/></a>
+        </li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      window.onload = function() {
+        var bgImg = document.querySelector('.box > .bgImg');
+        var liAll = document.querySelectorAll('.box > .imgList > li');
+
+        for (let i = 0; i < liAll.length; i++) {
+          const li = liAll[i];
+          li.index = i + 1;
+          li.onmouseover = function() {
+            console.log(this.index);
+            bgImg.style.backgroundImage = 'url("./img/0' + this.index + 'big.jpg")';
+          };
+        }
+      };
+    </script>
+  </body>
+</html>
